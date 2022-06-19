@@ -8,10 +8,12 @@ import { FiLogOut } from "react-icons/fi";
 import { HiOutlineLogin } from "react-icons/hi";
 import { MdOutlineAppRegistration, MdAdd } from "react-icons/md";
 import { useUserContext } from "../context/UserContextProvider";
-
+import { useStateValue } from "../context/stateProvision";
+import { actionType } from "../context/reducer";
 const Headers = () => {
   const email = "amanprasad9843@gmail.com";
   let { user } = useUserContext();
+  const [{cartItems},dispatch] = useStateValue()
   const [menu, isMenu] = useState(false);
   user = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
@@ -40,6 +42,14 @@ const Headers = () => {
       console.log(error.message);
     }
   };
+
+
+  const showCart = () => {
+    dispatch({
+      type: actionType.SET_CART_ITEMS,
+      cartItems: !cartItems,
+    })
+  }
 
   return (
     <header className="fixed z-50  w-screen bg-violet-100 p-3 px-4 md:p-6 md:px-16">
@@ -101,7 +111,7 @@ const Headers = () => {
                 About Us
               </li>
             </motion.ul>
-            <div className="relative flex text-center justify-center ">
+            <div className="relative flex text-center justify-center" onClick={showCart}>
               <MdShoppingBasket className="text-textColor text-2xl ml-8 cursor-pointer" />
               <div className="absolute -top-2  w-5 h-5 rounded-full bg-red-600">
                 <p className="text-xs text-white font-semibold">2</p>
@@ -168,8 +178,8 @@ const Headers = () => {
         )}
       </div>
 
-      <div className="flex md:hidden items-center justify-between w-full h-full">
-        <div className="relative flex text-center justify-center ">
+      <div className="flex md:hidden items-center justify-between w-full h-full ">
+        <div className="relative flex text-center justify-center " onClick={showCart}>
           <MdShoppingBasket className="text-textColor text-2xl ml-8 cursor-pointer" />
           <div className="absolute -top-2  w-5 h-5 rounded-full bg-red-600">
             <p className="text-xs text-white font-semibold">2</p>
