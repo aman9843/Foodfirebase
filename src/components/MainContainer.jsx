@@ -42,7 +42,11 @@ const MainContainer = () => {
     <RowContainer scrollValue={scrollValue} flag={true} data={foodItems}/>
     </section>
     <MenuContainer/>
-    <Cart/>
+
+    {cartItems && (
+  <Cart/>
+    )}
+  
     </div>
    
   );

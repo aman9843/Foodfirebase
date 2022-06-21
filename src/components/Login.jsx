@@ -37,7 +37,7 @@ const Login = () => {
 
   // facebook authorization
 
-  const facebook = () => {};
+  // const facebook = () => {};
 
   const handleLogin = async (e) => {
     e.preventDefault();

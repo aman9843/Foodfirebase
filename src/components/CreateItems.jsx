@@ -7,7 +7,8 @@ import {
   MdFastfood,
   MdDelete,
   MdCloudUpload,
-  MdDescription
+  MdDescription,
+  MdOutlineProductionQuantityLimits
 } from "react-icons/md";
 import Loader from "./Loader";
 import { FaRupeeSign } from "react-icons/fa";
@@ -125,6 +126,7 @@ const CreateItems = () => {
           imageUrl: imageAsset,
           avail:avail,
           price: price,
+          quantity:quantity
         };
         // saveItem(data);
         fs.collection("foodItems")
@@ -167,6 +169,7 @@ const CreateItems = () => {
     setDescription("");
     setImageAsset(null);
     setAvail('');
+    setQuantity('');
     setPrice("");
   };
 
@@ -317,6 +320,19 @@ const CreateItems = () => {
                     </option>
                   ))}
               </select>
+            </div>
+            <div className="w-full flex flex-col md:flex-row items-center gap-3 mt-3">
+              <div className="w-full py-2 border-b border-gray-300 flex items-center gap-2">
+                <MdOutlineProductionQuantityLimits className="text-gray-700 text-2xl" />
+                <input
+                  type="number"
+                  required
+                  placeholder="Add the Quantity..."
+                  className="w-full h-full text-lg  bg-transparent outline-none order-none placeholder:text-gray-500"
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
+              </div>
             </div>
 
             <div className="w-full flex flex-col md:flex-row items-center gap-3 mt-3">
