@@ -55,7 +55,7 @@ const Headers = () => {
       {/* Desktop */}
       <div className="hidden md:flex w-full h-full">
         {user ? (
-          <Link to={"/main"} className="flex  item-center gap-2 s ">
+          <Link to={"/"} className="flex  item-center gap-2 s ">
             <img
               src={logo}
               className="w-9 h-9 object-cover shadow-lg"
@@ -85,7 +85,7 @@ const Headers = () => {
               className="flex items-center gap-8 ml-auto"
             >
               <Link
-                to="/main"
+                to="/"
                 className="text-base text-textColor hover:duration-100 transition-all ease-in-out cursor-pointer"
                 onClick={imageClick}
               >
@@ -198,7 +198,7 @@ const Headers = () => {
               )}
         </div>
         {user ? (
-          <Link to={"/main"} className="flex  item-center gap-2 s ">
+          <Link to={"/"} className="flex  item-center gap-2 s ">
             <img
               src={logo}
               className="w-9 h-9 object-cover shadow-lg"

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import { useStateValue } from "../context/stateProvision";
 import RowContainer from "./RowContainer";
+import CheckOut from "./CheckOut";
 
 
 const MenuContainer = () => {
@@ -40,6 +41,7 @@ const MenuContainer = () => {
       <div className="w-full">
         
            <RowContainer flag={false} data={foodItems?.filter(n => n.data.category === filters)} />
+           <CheckOut/>
            
       </div>
       </div>

@@ -29,7 +29,7 @@ const Login = () => {
     try{
       await googleSignIn();
       clearData();
-      navigate('/main')
+      navigate('/')
     } catch(err) {
       console.log(err)
     }

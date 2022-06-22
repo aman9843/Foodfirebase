@@ -147,7 +147,7 @@ const CreateItems = () => {
               setFields(false)
             );
 
-            navigate('/main')
+            navigate('/')
 
 
           });

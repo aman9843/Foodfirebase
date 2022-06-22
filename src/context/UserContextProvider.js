@@ -63,7 +63,7 @@ export const UserContextProvider = ({ children }) => {
            "SuccessFully Registered with us",
           "success"
         );
-        navigate('/')
+        navigate('/login')
         
       })
       .catch((err) => {
@@ -85,7 +85,7 @@ export const UserContextProvider = ({ children }) => {
     return signInWithPopup(auth,googleAuthProvider).then((res) => {
       localStorage.setItem("user", JSON.stringify(res));
       console.log(res)
-      navigate('/main')
+      navigate('/')
     }).catch((err) => {
       console.log(err)
       Swal.fire({
@@ -110,7 +110,7 @@ export const UserContextProvider = ({ children }) => {
           "Successfully Logged In",
           "success"
         );
-        navigate('/main')
+        navigate('/')
        
       })
       .catch((err) => {

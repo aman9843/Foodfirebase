@@ -3,14 +3,13 @@ import React, { useState, useEffect } from "react";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { actionType } from "../context/reducer";
 import { useStateValue } from "../context/stateProvision";
-import CheckOut from "./CheckOut";
+// import CheckOut from "./CheckOut";
 let store = [];
 
-const CartItems = ({ items, flag, setFlag }) => {
+const CartItems = ({ items}) => {
   const [{ cartsItems }, dispatch] = useStateValue();
-  console.log("cartsItems",cartsItems)
-
-  const [qty, setQty] = useState(items.qty);
+  const [qty, setQty] = useState(1);
+ 
 
 
   const dispatchCart = () => {
@@ -21,7 +20,7 @@ const CartItems = ({ items, flag, setFlag }) => {
     });
   };
 
-  const updateQty = (action, id) => {
+  const updateQty = (action,id) => {
     if (action === "add") {
       setQty(qty + 1);
       // eslint-disable-next-line array-callback-return
@@ -32,39 +31,40 @@ const CartItems = ({ items, flag, setFlag }) => {
          
       //   }
       // });
+      // dispatchCart();
+    } 
+      // if (qty === 1) {
+      //   store = cartsItems.filter((item) => item.data.id !== id);
 
-      cartsItems.map((item) => {
-        if(item.data.id === id) {
-          item.data.quantity += 1;
-      
+      //   // dispatchCart();
+      // }
+      else {
+
+        if(qty >= 1) {
+          setQty(qty - 1);
         }
-      })
-      dispatchCart();
-    } else {
-     
-     
-      if (qty === 1) {
-        store = cartsItems.filter((item) => item.data.id !== id);
-        setFlag(flag+1)
-        dispatchCart();
-      } else {
-        setQty(qty - 1);
-        cartsItems.map((item) => {
-          if (item.data.id === id) {
-            item.data.quantity -= 1;
-            // setFlag(flag +1)
-          }
-        });
-        dispatchCart();
+      
+        // cartsItems.map((item) => {
+        //   if (item.data.id === id) {
+        //     item.data.quantity -= 1;
+        //     // setFlag(flag +1)
+        //   }
+        // });
+        // dispatchCart();
+
+        
       }
     
-  };
+  
+  }
 
-}
+
 
   useEffect(() => {
     store = cartsItems;
   }, [store,qty]);
+
+  
 
   return (
     <>
@@ -90,9 +90,9 @@ const CartItems = ({ items, flag, setFlag }) => {
           <BiMinus className="text-black-50"></BiMinus>
         </motion.div>
 
-        <p className="w-5 h-5 rounded-sm bg-white text-black-100 flex items-center justify-center">
+        <button className="w-5 h-5 rounded-sm bg-white text-black-100 flex items-center justify-center" disabled={qty === 0} value={qty}>
           {qty}
-        </p>
+        </button>
 
         <motion.div
           whileTap={{ scale: 0.75 }}
